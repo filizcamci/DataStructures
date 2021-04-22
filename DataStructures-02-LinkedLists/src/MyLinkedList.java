@@ -24,7 +24,7 @@ public class MyLinkedList {
             return first == null;
         }
         public void addLast(int item) {
-            var node = new Node(item);
+            Node node = new Node(item);
             //System.out.println("adding item: "+item);
             if (isEmpty())
                 first = last = node;
@@ -35,7 +35,7 @@ public class MyLinkedList {
             size++;
         }
     public void insertInOrder(int item) {
-        var node = new Node(item);
+        Node node = new Node(item);
         Node current;
         if (isEmpty())
             first = last = node;
@@ -61,8 +61,8 @@ public class MyLinkedList {
             System.out.println("Deleting last :"+ last.value);
             if (first==last) first=last=null;
             else {   // more than one node
-                var previous = first;
-                var current= first;
+                Node previous = first;
+                Node current= first;
                 while (current.next !=null){
                     previous=current;
                     current=current.next;
@@ -75,7 +75,7 @@ public class MyLinkedList {
         public void printLinkedList() {
             if (isEmpty())
                 throw new IllegalStateException();
-            var current = first;
+            Node current = first;
             while (current!= null) {
                 System.out.println("Value :  "+current.value);
                 current=current.next;
@@ -84,10 +84,10 @@ public class MyLinkedList {
         // This method reverses the nodes of the link list in one pass
         public void reverse() {
             if (isEmpty()) return;
-            var previous = first;
-            var current = first.next;
+            Node previous = first;
+            Node current = first.next;
             while (current != null) {
-                var nextNode = current.next;
+                Node nextNode = current.next;
                 current.next = previous;
                 previous = current;
                 current = nextNode;
@@ -99,8 +99,8 @@ public class MyLinkedList {
     public int getKthFromTheEnd(int k) {
         if (isEmpty())
             throw new IllegalStateException();
-        var a = first;
-        var b = first;
+        Node a = first;
+        Node b = first;
         for (int i = 0; i < k-1 ; i++) {
             b = b.next;
             if (b == null)
@@ -115,8 +115,8 @@ public class MyLinkedList {
     public void printMiddle() {
         if (isEmpty())
             throw new IllegalStateException();
-        var a = first;
-        var b = first;
+        Node a = first;
+        Node b = first;
         while (b != last && b.next != last) {
             b = b.next.next;
             a = a.next;

@@ -108,8 +108,8 @@ public class Tree {
         if (root == null)
             throw new IllegalStateException();
 
-        var current = root;
-        var last = current;
+        Node current = root;
+        Node last = current;
         while (current != null) {
             last = current;
             current = current.leftChild;
@@ -122,8 +122,8 @@ public class Tree {
         if (isLeaf(root))
             return root.value;
 
-        var left = min(root.leftChild);
-        var right = min(root.rightChild);
+        int left = min(root.leftChild);
+        int right = min(root.rightChild);
 
         return Math.min(Math.min(left, right), root.value);
     }
@@ -164,7 +164,7 @@ public class Tree {
     }
 
     public ArrayList<Integer> getNodesAtDistance(int distance) {
-        var list = new ArrayList<Integer>();
+        ArrayList<Integer> list = new ArrayList<Integer>();
         getNodesAtDistance(root, distance, list);
         return list;
     }
@@ -183,8 +183,8 @@ public class Tree {
     }
 
     public void traverseLevelOrder() {
-        for (var i = 0; i <= height(); i++) {
-            for (var value : getNodesAtDistance(i))
+        for (int i = 0; i <= height(); i++) {
+            for (int value : getNodesAtDistance(i))
                 System.out.println(value);
         }
     }
@@ -254,7 +254,7 @@ public class Tree {
         if (root == null)
             return false;
 
-        var areSibling = false;
+        boolean areSibling = false;
         if (root.leftChild != null && root.rightChild != null) {
             areSibling = (root.leftChild.value == first && root.rightChild.value == second) ||
                     (root.rightChild.value == first && root.leftChild.value == second);
@@ -266,7 +266,7 @@ public class Tree {
     }
 
     public List<Integer> getAncestors(int value) {
-        var list = new ArrayList<Integer>();
+        List<Integer> list = new ArrayList<Integer>();
         getAncestors(root, value, list);
         return list;
     }
@@ -299,7 +299,7 @@ public class Tree {
         if (root == null)
             return true;
 
-        var balanceFactor = height(root.leftChild) - height(root.rightChild);
+        int balanceFactor = height(root.leftChild) - height(root.rightChild);
 
         return Math.abs(balanceFactor) <= 1 &&
                 isBalanced(root.leftChild) &&
